@@ -6,12 +6,18 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   width: 100vw;
   height: 100vh;
+}
+
+.headingText {
+  @apply md:text-6xl text-5xl !leading-snug;
+}
+
+.bodyText {
+  @apply md:text-lg text-base;
 }

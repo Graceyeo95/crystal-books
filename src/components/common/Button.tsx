@@ -9,6 +9,7 @@ type ButtonProps = {
   variant: 'outline' | 'solid' | 'rounded';
   size: 'small' | 'large';
   type?: 'submit' | 'reset' | 'button';
+  ariaLabel?: string;
 } & VariantProps<typeof buttonVariants>;
 
 const buttonVariants = cva(['rounded-md transition-colors duration-300'], {
@@ -29,6 +30,7 @@ const buttonVariants = cva(['rounded-md transition-colors duration-300'], {
 const Button = (props: ButtonProps) => {
   return (
     <button
+      aria-label={props.ariaLabel}
       className={twMerge(
         buttonVariants(props as VariantProps<typeof buttonVariants>)
       )}

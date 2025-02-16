@@ -15,9 +15,9 @@ body {
 }
 
 .headingText {
-  @apply md:text-6xl text-5xl !leading-snug;
+  @apply lg:text-6xl md:text-5xl text-4xl !leading-snug;
 }
 
 .bodyText {
-  @apply md:text-lg text-base;
+  @apply lg:text-lg text-base;
 }

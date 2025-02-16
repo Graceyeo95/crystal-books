@@ -1,4 +1,4 @@
-import React from 'react';
+import withTransition from '../HOC/withTransition';
 
 const SearchFeed = () => {
   return (
@@ -8,4 +8,4 @@ const SearchFeed = () => {
   );
 };
 
-export default SearchFeed;
+export default withTransition(SearchFeed);

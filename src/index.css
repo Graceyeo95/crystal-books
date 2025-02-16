@@ -21,3 +21,23 @@ body {
 .bodyText {
   @apply lg:text-lg text-base;
 }
+
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: orange;
+  transform-origin: bottom;
+}
+
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: orange;
+  transform-origin: top;
+}

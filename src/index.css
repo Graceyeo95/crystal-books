@@ -18,7 +18,19 @@ body {
   @apply lg:text-6xl md:text-5xl text-4xl !leading-snug;
 }
 
-.bodyText {
+.subHeadingText {
+  @apply lg:text-5xl md:text-4xl text-3xl !leading-snug;
+}
+
+.largeBodyText {
+  @apply lg:text-3xl text-2xl;
+}
+
+.mediumBodyText {
+  @apply lg:text-2xl text-xl;
+}
+
+.smallBodyText {
   @apply lg:text-lg text-base;
 }
 

@@ -1,11 +1,14 @@
-import Banner from './common/Banner';
+import HeroBanner from './common/HeroBanner';
+import withTransition from '../HOC/withTransition';
+import HighlightBlock from './common/HighlightBlock';
 
 const Home = () => {
   return (
     <div>
-      <Banner />
+      <HeroBanner />
+      <HighlightBlock />
     </div>
   );
 };
 
-export default Home;
+export default withTransition(Home);

@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Home, BookDetail, SearchFeed, Navbar } from './components';
+import { Home, BookDetail, SearchFeed, Navbar } from '@/components';
 import { AnimatePresence } from 'framer-motion';
 
 function App() {

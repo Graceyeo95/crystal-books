@@ -27,7 +27,7 @@ const Navbar = () => {
       <Link to='/'>
         <div className='md:text-3xl text-2xl text-white'>책장</div>
       </Link>
-      <Searchbar isAtTop={isAtTop} />
+      <Searchbar />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import withTransition from '../HOC/withTransition';
+import withTransition from '../../HOC/withTransition';
 
 const SearchFeed = () => {
   return (

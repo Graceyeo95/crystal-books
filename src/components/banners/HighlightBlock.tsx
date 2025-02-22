@@ -1,4 +1,4 @@
-import nietzscheBook from '../../assets/nietzsche.jpg';
+import nietzscheBook from '@/assets/nietzsche.jpg';
 
 const HighlightBlock = () => {
   const recommendedBooks = ['Death of', 'A Salesman'];

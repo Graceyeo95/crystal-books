@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Searchbar = ({ isAtTop }: { isAtTop: boolean }) => {
+const Searchbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const navigate = useNavigate();

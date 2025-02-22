@@ -1,8 +1,8 @@
-//pages
-export { default as Home } from './pages/Home';
-export { default as BookDetail } from './pages/BookDetail';
-export { default as SearchFeed } from './pages/SearchFeed';
-//common
-export { default as Books } from './common/Books';
-export { default as Navbar } from './common/Navbar';
-export { default as BookCard } from './common/BookCard';
+export { default as Books } from './Books';
+export { default as Navbar } from './Navbar';
+export { default as BookCard } from './BookCard';
+export { default as HeroBanner } from './HeroBanner';
+export { default as HighlightBlock } from './HighlightBlock';
+export { default as TransparentBanner } from './TransparentBanner';
+export { default as Button } from './Button';
+export { default as Searchbar } from './Searchbar';

@@ -1,4 +1,4 @@
-import bookCover from '@/assets/book-cover.jpg';
+import bookCover from '@/assets/orange-book.jpg';
 
 const TransparentBanner = () => {
   return (

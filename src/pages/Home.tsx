@@ -1,7 +1,7 @@
-import HeroBanner from '../banners/HeroBanner';
+import HeroBanner from '@/components/HeroBanner';
 import withTransition from '@/HOC/withTransition';
-import HighlightBlock from '../banners/HighlightBlock';
-import TransparentBanner from '../banners/TransparentBanner';
+import HighlightBlock from '@/components/HighlightBlock';
+import TransparentBanner from '@/components/TransparentBanner';
 
 const Home = () => {
   return (

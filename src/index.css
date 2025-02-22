@@ -42,6 +42,7 @@ body {
   height: 100vh;
   background-color: orange;
   transform-origin: bottom;
+  z-index: 100;
 }
 
 .slide-out {
@@ -52,4 +53,5 @@ body {
   height: 100vh;
   background-color: orange;
   transform-origin: top;
+  z-index: 100;
 }

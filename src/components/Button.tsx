@@ -4,9 +4,10 @@ import type { VariantProps } from 'class-variance-authority';
 import { cva } from 'class-variance-authority';
 
 type ButtonProps = {
+  className?: string;
   onClick?: () => void;
   children: React.ReactNode;
-  variant: 'outline' | 'solid' | 'rounded';
+  variant: 'outline' | 'solid';
   size: 'small' | 'large';
   type?: 'submit' | 'reset' | 'button';
   ariaLabel?: string;

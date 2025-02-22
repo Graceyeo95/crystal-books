@@ -7,7 +7,7 @@ const TransparentBanner = () => {
       <img
         src={bookCover}
         alt='book'
-        className='fixed left-0 bottom-0 min-w-full min-h-full object-cover z-[-1]'
+        className='fixed left-0 bottom-0 min-w-full min-h-full object-cover z-[-10]'
       />
       <div className='relative text-white text-center'>Testing</div>
     </div>

@@ -2,13 +2,18 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/components';
 import { AnimatePresence } from 'framer-motion';
 import { Home, BookDetail, SearchFeed } from '@/pages';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Navbar />
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

@@ -11,17 +11,22 @@ const apiClient = axios.create({
 });
 
 export const searchBooks = async (query: string) => {
-  try {
-    const response = await apiClient.get('/searchBooks', {
-      params: {
-        keyword: query,
-        page: 1,
-      },
-    });
+  const response = await apiClient.get('/searchBooks', {
+    params: {
+      keyword: query,
+      page: 1,
+    },
+  });
 
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching books:', error);
-    throw new Error('Error fetching books');
-  }
+  return response.data;
+};
+
+// Get book by ID
+export const getBookById = async (bookId: string) => {
+  const response = await apiClient.get(`/getBookByID`, {
+    params: {
+      bookID: bookId,
+    },
+  });
+  return response.data;
 };

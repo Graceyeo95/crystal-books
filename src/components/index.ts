@@ -1,4 +1,4 @@
-export { default as Books } from './Books';
+export { default as BookList } from './BookList';
 export { default as Navbar } from './Navbar';
 export { default as BookCard } from './BookCard';
 export { default as HeroBanner } from './HeroBanner';

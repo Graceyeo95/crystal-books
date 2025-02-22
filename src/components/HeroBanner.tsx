@@ -4,7 +4,7 @@ const HeroBanner = () => {
   return (
     <div className='relative w-full h-[80vh] text-white text-center flex flex-col items-center justify-center'>
       <div className='absolute inset-0 h-full w-full'>
-        <div className='absolute left-0 top-0 h-full w-full bg-black/50' />
+        <div className='absolute left-0 top-0 h-full w-full bg-black/20' />
         <img
           src={library}
           alt='library'

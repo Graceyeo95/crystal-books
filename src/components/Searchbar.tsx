@@ -7,13 +7,12 @@ const Searchbar = () => {
   const navigate = useNavigate();
 
   const onHandleSubmit = (
-    e: React.FormEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>
+    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>
   ) => {
     e.preventDefault();
 
     if (searchTerm) {
       navigate(`/search/${searchTerm}`);
-
       setSearchTerm('');
     }
   };
@@ -27,7 +26,9 @@ const Searchbar = () => {
         type='text'
         value={searchTerm}
         placeholder='Search here'
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
         className='border-none outline-none text-sm bg-transparent w-[150px] pr-2 lg:focus:w-[300px] transition-all duration-300 ease-in-out'
       />
       <button

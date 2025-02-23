@@ -13,6 +13,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: #f04f23;
+  overflow-x: hidden;
 }
 
 .headingText {

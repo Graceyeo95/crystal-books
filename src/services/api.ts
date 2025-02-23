@@ -30,3 +30,13 @@ export const getBookById = async (bookId: string) => {
   });
   return response.data;
 };
+
+// Get author's books by ID
+export const getAuthorsBooks = async (authorId: string) => {
+  const response = await apiClient.get(`/getAuthorBooks`, {
+    params: {
+      authorID: authorId,
+    },
+  });
+  return response.data;
+};

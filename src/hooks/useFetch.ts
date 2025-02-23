@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { searchBooks, getBookById } from '../services/api';
+import { searchBooks, getBookById, getAuthorsBooks } from '../services/api';
 
 export const useSearchBooks = (query: string) => {
   const { data, isLoading, isError, error } = useQuery({
@@ -17,7 +17,18 @@ export const useBookDetail = (bookId: string) => {
     queryKey: ['bookDetail', bookId],
     queryFn: () => getBookById(bookId),
     enabled: !!bookId,
-    staleTime: 600000,
+    staleTime: Infinity,
+  });
+
+  return { data, isLoading, isError, error };
+};
+
+export const useAuthorsBooks = (authorId: string) => {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['bookDetail', authorId],
+    queryFn: () => getAuthorsBooks(authorId),
+    enabled: !!authorId,
+    staleTime: Infinity,
   });
 
   return { data, isLoading, isError, error };

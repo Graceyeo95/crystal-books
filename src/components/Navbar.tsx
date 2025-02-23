@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Favourites', link: '/', icon: <MdFavoriteBorder size={24} /> },
-    { name: 'Quotes', link: '/about', icon: <BsChatSquareQuote size={24} /> },
+    { name: 'Quotes', link: '/quote', icon: <BsChatSquareQuote size={24} /> },
   ];
 
   return (
@@ -38,7 +38,7 @@ const Navbar = () => {
           isAtTop ? 'text-orange' : 'text-white'
         }`}
       >
-        <Link to='/' className='text-xl md:text-3xl text-2xl'>
+        <Link to='/' className='text-xl lg:text-3xl md:text-2xl'>
           책장
         </Link>
 

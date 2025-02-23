@@ -24,7 +24,7 @@ const Searchbar = ({ isAtTop }: SearchbarProps) => {
   return (
     <form
       onSubmit={onHandleSubmit}
-      className={`px-[14px] flex items-center justify-between lg:pl-5 pr-[6px] md:pr-2 py-[6px] md:py-2 rounded-[40px] ${
+      className={`px-[14px] flex items-center justify-between w-full md:w-fit lg:pl-5 pr-[6px] md:pr-2 py-[6px] md:py-2 rounded-[40px] ${
         isAtTop ? 'bg-orange' : 'bg-white'
       }`}
     >
@@ -35,14 +35,14 @@ const Searchbar = ({ isAtTop }: SearchbarProps) => {
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
-        className={`border-none outline-none text-xs md:text-sm bg-transparent w-[150px] pr-2 lg:focus:w-[300px] transition-all duration-300 ease-in-out ${
+        className={`border-none outline-none mr-2 py-2 text-xs md:text-sm bg-transparent w-[150px] w-full pr-2 md:focus:w-[300px] transition-all duration-300 ease-in-out ${
           isAtTop ? 'placeholder-white text-white' : 'placeholder-neutral-300'
         }`}
       />
       <button
         type='submit'
         className={`border-none outline-none text-xs md:text-sm py-3 px-5 lg:px-8 font-semibold cursor-pointer rounded-[40px] ${
-          isAtTop ? 'bg-cream text-orange' : 'bg-orange text-white'
+          isAtTop ? 'bg-white text-orange' : 'bg-orange text-white'
         }`}
       >
         Search

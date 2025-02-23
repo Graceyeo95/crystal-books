@@ -22,9 +22,9 @@ const AuthorSuggestBanner = () => {
         <div className='flex flex-wrap lg:flex-nowrap lg:col-span-4 gap-4 items-center justify-center mx-auto xl:gap-x-8 mt-8'>
           {hanGangBooks.map((book, index) => (
             <img
-              key={index}
+              key={`hangang-book-${index}`}
               src={book}
-              alt={`book${index}`}
+              alt='hangang-book'
               className='w-[200px] lg:w-1/4 aspect-[2/3]'
             />
           ))}

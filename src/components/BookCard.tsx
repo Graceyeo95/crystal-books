@@ -18,9 +18,9 @@ const BookCard = (props: BookCardProps) => {
         />
         <div className='mt-3'>
           <p className='text-base mt-2'>{truncateText(props.title, 30)}</p>
-          {/* <p className='text-base text-neutral-300'>
-            {props.author.map((author) => author.name).join(', ')}
-          </p> */}
+          <p className='text-sm text-neutral-400'>
+            {props.author.map((item) => item.name)}
+          </p>
         </div>
       </div>
     </>

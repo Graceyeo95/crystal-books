@@ -28,7 +28,7 @@ export const useAuthorsBooks = (authorId: string) => {
     queryKey: ['bookDetail', authorId],
     queryFn: () => getAuthorsBooks(authorId),
     enabled: !!authorId,
-    staleTime: Infinity,
+    staleTime: 60000,
   });
 
   return { data, isLoading, isError, error };

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/components';
 import { AnimatePresence } from 'framer-motion';
-import { Home, BookDetail, SearchFeed } from '@/pages';
+import { Home, BookDetail, SearchFeed, Quotes } from '@/pages';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
@@ -24,6 +24,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode='wait'>
       <Routes location={location} key={location.pathname}>
         <Route path='/' element={<Home />} />
+        <Route path='/quote' element={<Quotes />} />
         <Route path='/book/:id' element={<BookDetail />} />
         <Route path='/search/:searchTerm' element={<SearchFeed />} />
       </Routes>

@@ -1,15 +1,20 @@
-import HeroBanner from '@/components/HeroBanner';
+import {
+  HeroBanner,
+  PlainBanner,
+  HighlightBlock,
+  TransparentBanner,
+  AuthorSuggestBanner,
+} from '@/components';
 import withTransition from '@/HOC/withTransition';
-import HighlightBlock from '@/components/HighlightBlock';
-import TransparentBanner from '@/components/TransparentBanner';
 
 const Home = () => {
   return (
     <div>
       <HeroBanner />
+      <PlainBanner />
       <HighlightBlock />
       <TransparentBanner />
-      <div className='h-[600px] bg-black' />
+      <AuthorSuggestBanner />
     </div>
   );
 };

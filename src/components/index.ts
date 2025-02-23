@@ -6,3 +6,5 @@ export { default as HighlightBlock } from './HighlightBlock';
 export { default as TransparentBanner } from './TransparentBanner';
 export { default as Button } from './Button';
 export { default as Searchbar } from './Searchbar';
+export { default as PlainBanner } from './PlainBanner';
+export { default as AuthorSuggestBanner } from './AuthorSuggestBanner';

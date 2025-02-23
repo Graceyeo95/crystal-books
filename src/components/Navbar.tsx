@@ -20,14 +20,19 @@ const Navbar = () => {
   return (
     <div
       ref={navbarRef}
-      className={`fixed p-4 left-0 top-0 w-full z-50 justify-between flex transition-colors duration-300 ${
-        isAtTop ? 'bg-black/30' : 'bg-transparent'
+      className={`fixed p-4 left-0 items-center top-0 w-full z-50 justify-between flex transition-colors duration-300 ${
+        isAtTop ? 'bg-cream' : 'bg-transparent'
       }`}
     >
-      <Link to='/'>
-        <div className='md:text-3xl text-2xl text-white'>책장</div>
+      <Link
+        to='/'
+        className={`md:text-3xl text-2xl ${
+          isAtTop ? 'text-orange' : 'text-white'
+        }`}
+      >
+        책장
       </Link>
-      <Searchbar />
+      <Searchbar isAtTop={isAtTop} />
     </div>
   );
 };

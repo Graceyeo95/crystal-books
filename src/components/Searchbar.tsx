@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Searchbar = () => {
+interface SearchbarProps {
+  isAtTop: boolean;
+}
+
+const Searchbar = ({ isAtTop }: SearchbarProps) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const navigate = useNavigate();
@@ -20,7 +24,9 @@ const Searchbar = () => {
   return (
     <form
       onSubmit={onHandleSubmit}
-      className='bg-white px-[14px] flex items-center justify-between lg:pl-[20px] pr-[10px] py-2  rounded-[30px]'
+      className={`px-[14px] flex items-center justify-between lg:pl-5 pr-[6px] md:pr-2 py-[6px] md:py-2 rounded-[40px] ${
+        isAtTop ? 'bg-orange' : 'bg-white'
+      }`}
     >
       <input
         type='text'
@@ -29,11 +35,15 @@ const Searchbar = () => {
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
-        className='border-none outline-none text-sm bg-transparent w-[150px] pr-2 lg:focus:w-[300px] transition-all duration-300 ease-in-out'
+        className={`border-none outline-none text-xs md:text-sm bg-transparent w-[150px] pr-2 lg:focus:w-[300px] transition-all duration-300 ease-in-out ${
+          isAtTop ? 'placeholder-white text-white' : 'placeholder-neutral-300'
+        }`}
       />
       <button
         type='submit'
-        className='border-none outline-none text-sm lg:text-sm py-[10px] px-[20px] lg:px-[30px] text-white font-semibold cursor-pointer rounded-[40px] bg-orange'
+        className={`border-none outline-none text-xs md:text-sm py-3 px-5 lg:px-8 font-semibold cursor-pointer rounded-[40px] ${
+          isAtTop ? 'bg-cream text-orange' : 'bg-orange text-white'
+        }`}
       >
         Search
       </button>

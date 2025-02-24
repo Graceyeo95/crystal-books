@@ -34,7 +34,7 @@ const Quotes = () => {
   ];
 
   return (
-    <div className='bg-white w-full h-fit'>
+    <div className='bg-white w-full h-full'>
       <HeroBanner
         image={{
           src: library,

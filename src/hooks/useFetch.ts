@@ -1,5 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { searchBooks, getBookById, getAuthorsBooks } from '../services/api';
+import {
+  searchBooks,
+  searchQuotes,
+  getBookById,
+  getAuthorsBooks,
+} from '../services/api';
 
 export const useSearchBooks = (query: string) => {
   const { data, isLoading, isError, error } = useQuery({
@@ -7,6 +12,17 @@ export const useSearchBooks = (query: string) => {
     queryFn: () => searchBooks(query),
     enabled: !!query,
     staleTime: 600000,
+  });
+
+  return { data, isLoading, isError, error };
+};
+
+export const useSearchQuotes = (query: string) => {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ['searchQuotes', query],
+    queryFn: () => searchQuotes(query),
+    enabled: !!query,
+    staleTime: 60000,
   });
 
   return { data, isLoading, isError, error };

@@ -10,6 +10,7 @@ const apiClient = axios.create({
   },
 });
 
+// search books by keyword
 export const searchBooks = async (query: string) => {
   const response = await apiClient.get('/searchBooks', {
     params: {
@@ -36,6 +37,17 @@ export const getAuthorsBooks = async (authorId: string) => {
   const response = await apiClient.get(`/getAuthorBooks`, {
     params: {
       authorID: authorId,
+    },
+  });
+  return response.data;
+};
+
+// search quotes by keyword
+export const searchQuotes = async (query: string) => {
+  const response = await apiClient.get(`/searchQuotes`, {
+    params: {
+      keyword: query,
+      page: 1,
     },
   });
   return response.data;

@@ -39,14 +39,13 @@ const SearchFeed = () => {
   return (
     <div className='bg-navy h-full text-white text-4xl text-center pt-12 container-wrapper'>
       <div className='h-[100px]' />
-      <h1 className='mb-24 largeBodyText lg:headingText'>
-        Search results for "{searchTerm}"
-      </h1>
+      <h1 className='mb-24 largeBodyText'>Search results for "{searchTerm}"</h1>
       <div className='mt-8 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid gap-y-24 max-w-[80vw] mx-auto'>
         {data?.map((book) => (
           <Link to={`/book/${book.bookId}`} key={book.bookId}>
             <BookCard
               title={book.title}
+              bookId={book.bookId}
               imageUrl={book.imageUrl}
               author={book.author}
             />

@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <HeroBanner
-        isFullHeight
+        isBigBanner
         image={{
           src: library,
           alt: 'Library Background',
@@ -24,7 +24,7 @@ const Home = () => {
       <PlainBanner />
       <HighlightBlock />
       <TransparentBanner />
-      {/* <AuthorSuggestBanner /> */}
+      <AuthorSuggestBanner />
     </div>
   );
 };

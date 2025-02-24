@@ -88,6 +88,7 @@ const Quotes = () => {
             {data.map((quote, index) => (
               <div key={index} className='col-span-12 lg:col-span-4'>
                 <QuoteCard
+                  id={quote.quoteText}
                   quoteText={quote.quoteText}
                   imageUrl={quote.imageUrl}
                 />

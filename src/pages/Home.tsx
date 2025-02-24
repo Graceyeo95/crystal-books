@@ -17,9 +17,8 @@ const Home = () => {
           src: library,
           alt: 'Library Background',
         }}
-        heading='함께읽고 나누는 독후 활동'
-        subHeading='독서 커뮤니티 책장에서 다독러들과 함께 책에 관해 이야기하며 독후
-          활동을 해보세요'
+        heading='책과 명언을 나만의 공간에 저장'
+        subHeading='책과 명언, 언제든지 찾아보고 즐겨찾기 할 수 있어요'
       />
       <PlainBanner />
       <HighlightBlock />

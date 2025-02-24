@@ -7,3 +7,4 @@ export { default as Button } from './Button';
 export { default as Searchbar } from './Searchbar';
 export { default as PlainBanner } from './PlainBanner';
 export { default as AuthorSuggestBanner } from './AuthorSuggestBanner';
+export { default as Footer } from './Footer';

@@ -36,7 +36,7 @@ body {
 }
 
 .filterTag {
-  @apply text-sm border-[1px] py-1 px-3 rounded-lg border-orange hover:bg-orange hover:text-white cursor-pointer;
+  @apply text-sm border-[1px] py-1 px-3 rounded-lg border-orange cursor-pointer;
 }
 
 .container-wrapper {

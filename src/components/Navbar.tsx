@@ -22,7 +22,11 @@ const Navbar = () => {
   }, [handleScroll]);
 
   const navItems = [
-    { name: 'Favourites', link: '/', icon: <MdFavoriteBorder size={24} /> },
+    {
+      name: 'Favourites',
+      link: '/favourite',
+      icon: <MdFavoriteBorder size={24} />,
+    },
     { name: 'Quotes', link: '/quote', icon: <BsChatSquareQuote size={24} /> },
   ];
 

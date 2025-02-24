@@ -46,7 +46,7 @@ const Navbar = () => {
           책장
         </Link>
 
-        <div className='flex gap-x-4'>
+        <div className='flex gap-x-6'>
           {navItems.map(({ name, link, icon }) => (
             <Link
               key={name}

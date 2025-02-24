@@ -35,7 +35,7 @@ const Searchbar = ({ isAtTop }: SearchbarProps) => {
         onChange={(e) => {
           setSearchTerm(e.target.value);
         }}
-        className={`border-none outline-none mr-2 py-2 text-xs md:text-sm bg-transparent w-[150px] w-full pr-2 md:focus:w-[300px] transition-all duration-300 ease-in-out ${
+        className={`border-none outline-none mr-2 py-2 text-xs md:text-sm bg-transparent md:w-[150px] w-full pr-2 md:focus:w-[300px] transition-all duration-300 ease-in-out ${
           isAtTop ? 'placeholder-white text-white' : 'placeholder-neutral-300'
         }`}
       />

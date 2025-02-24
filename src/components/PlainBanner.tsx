@@ -4,7 +4,7 @@ import Button from '@/components/Button';
 
 const PlainBanner = () => {
   return (
-    <div className='bg-white py-32'>
+    <div className='bg-white container-wrapper'>
       <motion.div
         variants={fadeIn('up', 0.2)}
         initial='hidden'

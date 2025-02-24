@@ -5,13 +5,21 @@ import { FallingLines } from 'react-loader-spinner';
 import BookCard, { type BookCardProps } from '@/components/BookCard';
 import Button from '../components/Button';
 
+interface UseSearchBooksResult {
+  data: BookCardProps[];
+  isLoading: boolean;
+  isError: boolean;
+}
+
 const SearchFeed = () => {
   const { searchTerm } = useParams();
-  const { data, isLoading, isError } = useSearchBooks(searchTerm || '');
+  const { data, isLoading, isError }: UseSearchBooksResult = useSearchBooks(
+    searchTerm || ''
+  );
 
   if (isLoading)
     return (
-      <div className='w-screen h-screen flex items-center justify-center'>
+      <div className='w-screen h-screen flex items-center justify-center bg-orange'>
         <FallingLines color='#fff' width='100' visible={true} />
       </div>
     );
@@ -35,7 +43,7 @@ const SearchFeed = () => {
         Search results for "{searchTerm}"
       </h1>
       <div className='mt-8 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid gap-y-24 max-w-[80vw] mx-auto'>
-        {data?.map((book: BookCardProps) => (
+        {data?.map((book) => (
           <Link to={`/book/${book.bookId}`} key={book.bookId}>
             <BookCard
               title={book.title}

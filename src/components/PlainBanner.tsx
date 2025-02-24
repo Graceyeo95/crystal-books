@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/animation';
 import Button from '@/components/Button';
+import { Link } from 'react-router-dom';
 
 const PlainBanner = () => {
   return (
@@ -22,9 +23,11 @@ const PlainBanner = () => {
           원하는 키워드로 명언을 탐색하며, 나만의 영감을 찾아보세요
         </p>
 
-        <Button variant='outline' size='large' className='mt-8'>
-          명언 찾아보기
-        </Button>
+        <Link to='/quote'>
+          <Button variant='outline' size='large' className='mt-8'>
+            명언 찾아보기
+          </Button>
+        </Link>
       </motion.div>
     </div>
   );

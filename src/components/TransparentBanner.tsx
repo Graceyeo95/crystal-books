@@ -2,6 +2,7 @@ import bookCover from '@/assets/orange-book.jpg';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/animation';
 import Button from './Button';
+import { Link } from 'react-router-dom';
 
 const TransparentBanner = () => {
   return (
@@ -20,25 +21,21 @@ const TransparentBanner = () => {
         viewport={{ once: true, amount: 0.7 }}
         className='w-full h-full flex flex-col z-10 text-center'
       >
-        <p className='headingText mb-3'>
+        <p className='subHeadingText mb-3'>
           <span>
-            <strong>함께</strong> 읽고 나누는
+            <strong>오늘의 책, 오늘의 명언</strong>
           </span>
           <br />
-          <span>
-            <strong>독후</strong> 활동
-          </span>
+          <span>나만의 컬렉션 만들기!</span>
         </p>
 
-        <p className='smallBodyText'>
-          <span>독서 커뮤니티 책장에서 다독러들과 함께 책에 관해</span>
-          <br />
-          <span>이야기하며 독후 활동을 해보세요</span>
-        </p>
+        <p className='smallBodyText'>마음에 드는 책과 명언을 모아보세요</p>
 
-        <Button variant='solid' size='small' className='w-fit mt-8 mx-auto'>
-          독후감 쓰기
-        </Button>
+        <Link to='/favourite'>
+          <Button variant='solid' size='small' className='w-fit mt-8 mx-auto'>
+            즐겨찾기 보기
+          </Button>
+        </Link>
       </motion.div>
     </div>
   );

@@ -7,7 +7,7 @@ type HeroBannerProps = {
     alt: string;
   };
   heading: string;
-  subHeading: string;
+  subHeading?: string;
   isBigBanner?: boolean;
 };
 
@@ -40,7 +40,7 @@ const HeroBanner = (props: HeroBannerProps) => {
           >
             {props.heading}
           </h1>
-          <h2 className='smallBodyText'>{props.subHeading}</h2>
+          <h2 className='smallBodyText'>{props?.subHeading}</h2>
         </motion.div>
       </div>
     </div>

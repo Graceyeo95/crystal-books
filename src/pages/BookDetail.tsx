@@ -1,9 +1,10 @@
 import withTransition from '@/HOC/withTransition';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { FallingLines } from 'react-loader-spinner';
 import { useBookDetail } from '@/hooks/useFetch';
 import { truncateText } from '@/utils/helpers';
 import { useState } from 'react';
+import Button from '../components/Button';
 
 type GenreType = {
   name: string;
@@ -12,26 +13,42 @@ type GenreType = {
 const BookDetail = () => {
   const [isShowMore, setIsShowMore] = useState(false);
   const { id } = useParams();
-  const { data, isLoading, isError, error } = useBookDetail(id!);
+  const { data, isLoading, isError } = useBookDetail(id!);
 
-  if (isLoading) {
+  if (isLoading)
     return (
-      <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+      <div className='w-screen h-screen flex items-center justify-center bg-orange'>
         <FallingLines color='#fff' width='100' visible={true} />
       </div>
     );
-  }
 
-  if (isError) return <div>Error: {error?.message}</div>;
+  if (isError)
+    return (
+      <div className='w-screen h-screen bg-orange'>
+        <div className='max-w-[80vw] mx-auto flex flex-col items-center justify-center gap-y-8 text-center text-white text-xl lg:text-2xl'>
+          Sorry, there was a problem while fetching books
+          <Link to='/'>
+            <Button
+              variant='solid'
+              size='small'
+              className='border-whiteborder-2'
+            >
+              Home
+            </Button>
+          </Link>
+        </div>
+      </div>
+    );
 
   const truncatedDescription = (text: string) => {
+    if (!text) return;
     return isShowMore ? text : truncateText(text, 500);
   };
 
   return (
     <div className='text-white text-3xl text-center bg-orange'>
-      <div className='h-[160px] lg:h-[200px]' />
-      <div className='max-w-[80vw] gap-y-8 lg:gap-y-12 flex flex-col lg:flex-row mx-auto justify-center gap-x-20 mb-20'>
+      <div className='h-[160px]' />
+      <div className='max-w-[80vw] gap-y-8 lg:gap-y-12 container-wrapper flex flex-col lg:flex-row mx-auto justify-center gap-x-20'>
         <div className='w-full lg:w-1/2 max-w-[240px] md:max-w-[300px] lg:max-w-[400px] mx-auto lg:mx-0'>
           <img
             src={data.imageUrl}

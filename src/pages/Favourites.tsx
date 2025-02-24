@@ -37,6 +37,7 @@ const Favourites = () => {
               const category = item.charAt(0).toUpperCase() + item.slice(1);
               return (
                 <button
+                  key={`category-${item}`}
                   onClick={() => setSelectedCategory(item as CategoryType)}
                   className={`cursor-pointer ${
                     isActive ? 'border-b-2 border-orange' : 'border-none'

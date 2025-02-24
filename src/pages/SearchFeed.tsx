@@ -37,7 +37,7 @@ const SearchFeed = () => {
     );
 
   return (
-    <div className='bg-navy h-full text-white text-4xl text-center pt-12'>
+    <div className='bg-navy h-full text-white text-4xl text-center pt-12 container-wrapper'>
       <div className='h-[100px]' />
       <h1 className='mb-24 largeBodyText lg:headingText'>
         Search results for "{searchTerm}"

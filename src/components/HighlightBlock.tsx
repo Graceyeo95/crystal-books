@@ -1,12 +1,12 @@
 import book2 from '@/assets/book2.jpg';
 import { motion } from 'framer-motion';
-import { fadeIn } from '@/utils/animation';
+import { slideIn, fadeIn } from '@/utils/animation';
 
 const HighlightBlock = () => {
   const recommendedBooks = ['Death of', 'A Salesman'];
 
   return (
-    <div className='bg-orange text-white py-24 flex flex-col'>
+    <div className='bg-orange text-white container-wrapper flex flex-col'>
       {/* Header */}
       <motion.div
         variants={fadeIn('up', 0.2)}
@@ -20,15 +20,15 @@ const HighlightBlock = () => {
       </motion.div>
 
       {/* Content Wrapper */}
-      <motion.div
-        variants={fadeIn('up', 0.2)}
-        initial='hidden'
-        whileInView='show'
-        viewport={{ once: true, amount: 0.7 }}
-        className='flex flex-col gap-y-12 lg:gap-y-0 lg:flex-row justify-center md:gap-x-12 lg:gap-x-32 mt-10 lg:mt-16 max-w-[80%] mx-auto w-full'
-      >
+      <div className='flex flex-col gap-y-12 lg:gap-y-0 lg:flex-row justify-center md:gap-x-12 lg:gap-x-32 mt-10 lg:mt-16 max-w-[80%] mx-auto w-full'>
         {/* Left Section */}
-        <div className='w-full lg:w-1/2'>
+        <motion.div
+          variants={slideIn('left', 1.4, 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.5 }}
+          className='w-full lg:w-1/2'
+        >
           <div className='space-y-2 lg:space-y-3'>
             {recommendedBooks.map((title) => (
               <p
@@ -54,13 +54,19 @@ const HighlightBlock = () => {
               윌리는 방탕한 낙오자로 전락하면서...
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Section (Book Cover) */}
-        <div className='flex w-[200px] md:w-[240px] mx-auto lg:mx-0'>
+        <motion.div
+          variants={slideIn('right', 1.2, 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.7 }}
+          className='flex w-[200px] md:w-[240px] mx-auto lg:mx-0'
+        >
           <img src={book2} alt='book' className='w-full h-full object-cover' />
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };

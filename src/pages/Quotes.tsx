@@ -16,9 +16,9 @@ interface UseSearchQuotesResult {
 }
 
 const Quotes = () => {
-  const [quoteKeyword, setQuoteKeyword] = useState('love');
+  const [activeQuoteKeyword, setActiveQuoteKeyword] = useState('love');
   const { data, isLoading, isError }: UseSearchQuotesResult = useSearchQuotes(
-    quoteKeyword || ''
+    activeQuoteKeyword || ''
   );
 
   const keywords = [
@@ -40,9 +40,8 @@ const Quotes = () => {
           src: library,
           alt: 'Library Background',
         }}
-        heading='Find your quote'
-        subHeading='독서 커뮤니티 책장에서 다독러들과 함께 책에 관해 이야기하며 독후
-          활동을 해보세요'
+        heading='마음에 드는 명언을 찾고 모아보세요'
+        subHeading='키워드로 나만의 명언을 찾아보세요'
       />
       <div className='max-w-[80vw] mx-auto container-wrapper text-orange largeBodyText'>
         <p className='border-b-[1px] border-orange py-6'>Quotes by keyword</p>
@@ -50,8 +49,12 @@ const Quotes = () => {
           {keywords.map((keyword) => (
             <span
               key={keyword}
-              onClick={() => setQuoteKeyword(keyword)}
-              className='filterTag'
+              onClick={() => setActiveQuoteKeyword(keyword)}
+              className={`filterTag ${
+                activeQuoteKeyword.toLowerCase() === keyword.toLowerCase()
+                  ? 'bg-orange text-white'
+                  : 'bg-white text-orange'
+              }`}
             >
               {keyword}
             </span>

@@ -5,6 +5,8 @@ import { useBookDetail } from '@/hooks/useFetch';
 import { truncateText } from '@/utils/helpers';
 import { useState } from 'react';
 import Button from '../components/Button';
+import { motion } from 'framer-motion';
+import { slideIn } from '@/utils/animation';
 
 type GenreType = {
   name: string;
@@ -46,18 +48,30 @@ const BookDetail = () => {
   };
 
   return (
-    <div className='text-white text-3xl text-center bg-orange'>
+    <div className='text-white text-3xl text-center bg-navy'>
       <div className='h-[160px]' />
       <div className='max-w-[80vw] gap-y-8 lg:gap-y-12 container-wrapper flex flex-col lg:flex-row mx-auto justify-center gap-x-20'>
-        <div className='w-full lg:w-1/2 max-w-[240px] md:max-w-[300px] lg:max-w-[400px] mx-auto lg:mx-0'>
+        <motion.div
+          variants={slideIn('left', 1, 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: false, amount: 0.9 }}
+          className='w-full lg:w-1/2 max-w-[240px] md:max-w-[300px] lg:max-w-[400px] mx-auto lg:mx-0'
+        >
           <img
             src={data.imageUrl}
             alt={data.title}
             className='w-full aspect-[3/4]'
           />
-        </div>
+        </motion.div>
 
-        <div className='my-auto space-y-3 text-center lg:text-left w-full lg:w-1/2'>
+        <motion.div
+          variants={slideIn('right', 1, 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: false }}
+          className='my-auto space-y-3 text-center lg:text-left w-full lg:w-1/2'
+        >
           <h1 className='largeBodyText font-bold'>{data?.title}</h1>
           <p className='smallBodyText text-neutral-200'>
             By {data?.author.name}
@@ -73,20 +87,16 @@ const BookDetail = () => {
             ))}
           </div>
           <div className='smallBodyText'>
-            <div>
-              {truncatedDescription(data.description)}{' '}
-              <button
-                onClick={() => setIsShowMore((prev) => !prev)}
-                className='underline'
-              >
-                Read {isShowMore ? 'Less' : 'More'}
-              </button>
-            </div>
+            {truncatedDescription(data.description)}{' '}
+            <button
+              onClick={() => setIsShowMore((prev) => !prev)}
+              className='underline'
+            >
+              Read {isShowMore ? 'Less' : 'More'}
+            </button>
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      <div className='bg-cream h-[500px]'>testing</div>
     </div>
   );
 };

@@ -8,14 +8,14 @@ type HeroBannerProps = {
   };
   heading: string;
   subHeading: string;
-  isFullHeight?: boolean;
+  isBigBanner?: boolean;
 };
 
 const HeroBanner = (props: HeroBannerProps) => {
   return (
     <div
       className={`${
-        props.isFullHeight ? 'h-[80vh]' : 'h-[60vh]'
+        props?.isBigBanner ? 'h-[80vh]' : 'h-[60vh]'
       } relative w-full text-white text-center flex flex-col items-center justify-center`}
     >
       <div className='relative h-full w-full'>
@@ -33,7 +33,13 @@ const HeroBanner = (props: HeroBannerProps) => {
           viewport={{ once: true, amount: 0.7 }}
           className='absolute left-0 top-0 w-full h-full items-center flex flex-col justify-center z-10 px-12'
         >
-          <h1 className='headingText mb-3'>{props.heading}</h1>
+          <h1
+            className={`mb-3 ${
+              props?.isBigBanner ? 'headingText' : 'subHeadingText'
+            }`}
+          >
+            {props.heading}
+          </h1>
           <h2 className='smallBodyText'>{props.subHeading}</h2>
         </motion.div>
       </div>

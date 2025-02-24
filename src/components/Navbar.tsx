@@ -47,7 +47,7 @@ const Navbar = () => {
             <Link
               key={name}
               to={link}
-              className='hover:text-orange flex items-center gap-1'
+              className='hover:underline underline-offset-4 flex items-center gap-1'
             >
               {isDesktop ? name : icon}
             </Link>

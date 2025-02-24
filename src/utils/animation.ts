@@ -22,8 +22,8 @@ export const fadeIn = (direction: string, delay: number) => {
 export const slideIn = (direction: string, duration: number, delay: number) => {
   return {
     hidden: {
-      x: direction === 'left' ? '-60%' : direction === 'right' ? '60%' : 0,
-      y: direction === 'up' ? '60%' : direction === 'down' ? '60%' : 0,
+      x: direction === 'left' ? '-50%' : direction === 'right' ? '50%' : 0,
+      y: direction === 'up' ? '50%' : direction === 'down' ? '50%' : 0,
       opacity: 0,
     },
     show: {

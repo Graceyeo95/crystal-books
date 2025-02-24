@@ -1,10 +1,10 @@
 import { resizeImageUrl, truncateText } from '@/utils/helpers';
 
 export interface BookCardProps {
-  bookId?: number;
+  bookId: number;
   title: string;
   imageUrl: string;
-  author: { name: string }[];
+  author?: { name: string }[];
 }
 
 const BookCard = (props: BookCardProps) => {
@@ -17,9 +17,9 @@ const BookCard = (props: BookCardProps) => {
           className='w-[150px] md:w-[180px] lg:w-[240px] aspect-[3/4]'
         />
         <div className='mt-3'>
-          <p className='text-base mt-2'>{truncateText(props.title, 30)}</p>
+          <p className='text-base'>{truncateText(props?.title || '', 30)}</p>
           <p className='text-sm text-neutral-400'>
-            {props.author.map((item) => item.name)}
+            {props.author?.map((item) => item.name)}
           </p>
         </div>
       </div>

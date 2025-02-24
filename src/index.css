@@ -35,6 +35,14 @@ body {
   @apply lg:text-lg text-base;
 }
 
+.filterTag {
+  @apply text-sm border-[1px] py-1 px-3 rounded-lg border-orange hover:bg-orange hover:text-white cursor-pointer;
+}
+
+.container-wrapper {
+  @apply py-20 lg:py-24;
+}
+
 .slide-in {
   position: fixed;
   top: 0;

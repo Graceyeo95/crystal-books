@@ -2,7 +2,6 @@ import { truncateText } from '../utils/helpers';
 import { useFavoritesStore } from '@/store/useFavoritesStore';
 import { toast } from 'react-toastify';
 import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
-import { memo } from 'react';
 
 export interface QuoteCardProps {
   id: string;
@@ -10,7 +9,7 @@ export interface QuoteCardProps {
   quoteText: string;
 }
 
-const QuoteCard = memo((props: QuoteCardProps) => {
+const QuoteCard = (props: QuoteCardProps) => {
   const { addFavorite, removeFavorite, isFavorite } = useFavoritesStore();
 
   const handleFavoriteToggle = () => {
@@ -59,6 +58,6 @@ const QuoteCard = memo((props: QuoteCardProps) => {
       </div>
     </>
   );
-});
+};
 
 export default QuoteCard;

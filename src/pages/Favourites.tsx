@@ -8,7 +8,7 @@ import { QuoteCard, BookCard } from '@/components';
 const Favourites = () => {
   const { books, quotes, loadFavorites } = useFavoritesStore();
   const [selectedCategory, setSelectedCategory] = useState<'book' | 'quote'>(
-    'quote'
+    'book'
   );
 
   useEffect(() => {

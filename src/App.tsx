@@ -43,7 +43,7 @@ const AnimatedRoutes = () => {
         <Route path='/favourite' element={<Favourites />} />
         <Route path='/book/:id' element={<BookDetail />} />
         <Route path='/search/:searchTerm' element={<SearchFeed />} />
-        <Route path='/*' element={<NotFound />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );

@@ -1,4 +1,14 @@
 import { create } from 'zustand';
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from 'firebase/firestore';
+import { db, auth } from '@/lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 
 type Book = {
   id: number;
@@ -23,69 +33,61 @@ type FavoritesState = {
   removeFavorite: (id: number | string, category: CategoryType) => void;
   isFavorite: (id: number | string, category: CategoryType) => boolean;
   loadFavorites: () => void;
+  clearFavorites: () => void;
 };
-
-const LOCAL_STORAGE_KEY_BOOKS = 'favorites_books';
-const LOCAL_STORAGE_KEY_QUOTES = 'favorites_quotes';
 
 export const useFavoritesStore = create<FavoritesState>((set, get) => ({
   books: [],
   quotes: [],
 
-  // Add a favorite item (book or quote)
-  addFavorite: (item, category) => {
-    set((state) => {
+  addFavorite: async (item, category) => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const docRef = doc(db, 'users', user.uid);
+    try {
       if (category === 'book') {
-        // Check if the book is already in favorites
-        if (state.books.some((b) => b.id === (item as Book).id)) {
-          return state;
-        }
-        const updatedBooks = [...state.books, item as Book];
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY_BOOKS,
-          JSON.stringify(updatedBooks)
-        );
-        return { books: updatedBooks };
+        await updateDoc(docRef, {
+          books: arrayUnion(item as Book),
+        });
+        set((state) => ({ books: [...state.books, item as Book] }));
       } else {
-        // Check if the quote is already in favorites
-        if (state.quotes.some((q) => q.id === (item as Quote).id)) {
-          return state;
-        }
-        const updatedQuotes = [...state.quotes, item as Quote];
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY_QUOTES,
-          JSON.stringify(updatedQuotes)
-        );
-        return { quotes: updatedQuotes };
+        await updateDoc(docRef, {
+          quotes: arrayUnion(item as Quote),
+        });
+        set((state) => ({ quotes: [...state.quotes, item as Quote] }));
       }
-    });
+    } catch (error) {
+      console.error('Error adding favorite:', error);
+    }
   },
 
-  // Remove a favorite item (book or quote) by its ID
-  removeFavorite: (id, category) => {
-    set((state) => {
-      let updatedBooks = [...state.books];
-      let updatedQuotes = [...state.quotes];
+  removeFavorite: async (id, category) => {
+    const user = auth.currentUser;
+    if (!user) return;
 
+    const docRef = doc(db, 'users', user.uid);
+    const state = get();
+
+    try {
       if (category === 'book') {
-        updatedBooks = state.books.filter((item) => item.id !== id);
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY_BOOKS,
-          JSON.stringify(updatedBooks)
-        );
-        return { books: updatedBooks };
+        const bookToRemove = state.books.find((item) => item.id === id);
+        await updateDoc(docRef, {
+          books: arrayRemove(bookToRemove),
+        });
+        set({ books: state.books.filter((item) => item.id !== id) });
       } else {
-        updatedQuotes = state.quotes.filter((item) => item.id !== id);
-        localStorage.setItem(
-          LOCAL_STORAGE_KEY_QUOTES,
-          JSON.stringify(updatedQuotes)
-        );
-        return { quotes: updatedQuotes };
+        const quoteToRemove = state.quotes.find((item) => item.id === id);
+        await updateDoc(docRef, {
+          quotes: arrayRemove(quoteToRemove),
+        });
+        set({ quotes: state.quotes.filter((item) => item.id !== id) });
       }
-    });
+    } catch (error) {
+      console.error('Error removing favorite:', error);
+    }
   },
 
-  // Check if a specific item is a favorite (by ID and category)
   isFavorite: (id, category) => {
     const state = get();
     if (category === 'book') {
@@ -95,16 +97,27 @@ export const useFavoritesStore = create<FavoritesState>((set, get) => ({
     }
   },
 
-  // Load favorites from localStorage
-  loadFavorites: () => {
-    const storedBooks = localStorage.getItem(LOCAL_STORAGE_KEY_BOOKS);
-    const storedQuotes = localStorage.getItem(LOCAL_STORAGE_KEY_QUOTES);
-
-    if (storedBooks) {
-      set({ books: JSON.parse(storedBooks) });
-    }
-    if (storedQuotes) {
-      set({ quotes: JSON.parse(storedQuotes) });
-    }
+  loadFavorites: async () => {
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, 'users', user.uid);
+        try {
+          const docSnap = await getDoc(docRef);
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            set({
+              books: data.books || [],
+              quotes: data.quotes || [],
+            });
+          } else {
+            // If no document exists, create an empty one
+            await setDoc(docRef, { books: [], quotes: [] });
+          }
+        } catch (error) {
+          console.error('Error loading favorites:', error);
+        }
+      }
+    });
   },
+  clearFavorites: () => set({ books: [], quotes: [] }),
 }));
